@@ -25,60 +25,60 @@ class Application < Sinatra::Base
       return response
     end
 
-    # post '/albums' do
-    #   repo = AlbumRepository.new
+    post '/albums' do
+      repo = AlbumRepository.new
 
-    #   album = Album.new
-    #   album.title = params[:title]
-    #   album.release_year = params[:release_year]
-    #   album.artist_id = params[:artist_id]
+      album = Album.new
+      album.title = params[:title]
+      album.release_year = params[:release_year]
+      album.artist_id = params[:artist_id]
 
-    #   repo.create(album)
-    #   # length = (repo.all.length).to_i
-    #   # result = repo.find(length + 1)
+      repo.create(album)
+      # length = (repo.all.length).to_i
+      # result = repo.find(length + 1)
       
-    #   # return "#{result.title}, #{result.release_year}, #{result.artist_id}"
-    #   return nil
-    # end
-
-    # get '/artists' do
-    #   repo = ArtistRepository.new
-    #   artists = repo.all
-
-    #   response = artists.map do |artist|
-    #     artist.name
-    #   end.join(", ")
-    # end
-
-
-    post '/artists' do
-      repo = ArtistRepository.new
-      artist = Artist.new
-
-      artist.name = params[:name]
-      artist.genre = params[:genre]
-
-      repo.create(artist)
-
-      return ''
+      # return "#{result.title}, #{result.release_year}, #{result.artist_id}"
+      return nil
     end
 
-    # get '/albums/:id' do
-    #   album_repo = AlbumRepository.new
-    #   artist_repo =ArtistRepository.new
+    get '/artists' do
+      repo = ArtistRepository.new
+      artists = repo.all
 
-    #   @id = params[:id]
+      response = artists.map do |artist|
+        artist.name
+      end.join(", ")
+    end
 
-    #   @album = album_repo.find(@id)
 
-    #   # @album.title = params[:title]
-    #   # @album.release_year = params[:release_year]
-    #   # @album.artist_id = params[:artist_id]
-    #   @artist = artist_repo.find(@id)
-    #   # @artist.name = params[:name]
+    # post '/artists' do
+    #   repo = ArtistRepository.new
+    #   artist = Artist.new
 
-    #   return erb(:index)
+    #   artist.name = params[:name]
+    #   artist.genre = params[:genre]
+
+    #   repo.create(artist)
+
+    #   return ''
     # end
+
+    get '/albums/:id' do
+      album_repo = AlbumRepository.new
+      artist_repo =ArtistRepository.new
+
+      @id = params[:id]
+
+      @album = album_repo.find(@id)
+
+      # @album.title = params[:title]
+      # @album.release_year = params[:release_year]
+      # @album.artist_id = params[:artist_id]
+      @artist = artist_repo.find(@id)
+      # @artist.name = params[:name]
+
+      return erb(:index)
+    end
 
     # get '/albums' do
     #   repo = AlbumRepository.new
@@ -97,9 +97,9 @@ class Application < Sinatra::Base
       return erb(:index_3)
     end
 
-    # get '/albums/new' do
-    #   return erb(:new_album)
-    # end
+    get '/albums/new' do
+      return erb(:new_album)
+    end
 
     # post '/albums' do
     #   if params[:album_title] == nil || params[:album_release_year] == nil || params[:album_artist_id] == nil
