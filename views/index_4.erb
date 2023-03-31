@@ -1,0 +1,12 @@
+<html>
+    <head></head>
+    <body>
+        <%  @artist.each do |artist| %>
+            <p>
+                Name: <%= artist.name %>
+                Release: <%= artist.genre %>
+                <a href ='/albums/ <%=artist.id%>'>Click here for the id</a>
+            </p>
+        <% end %>
+    </body>
+</html>
