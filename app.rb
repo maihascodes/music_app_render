@@ -63,22 +63,22 @@ class Application < Sinatra::Base
       return ''
     end
 
-    # get '/albums/:id' do
-    #   album_repo = AlbumRepository.new
-    #   artist_repo =ArtistRepository.new
+    get '/albums/:id' do
+      album_repo = AlbumRepository.new
+      artist_repo =ArtistRepository.new
 
-    #   @id = params[:id]
+      @id = params[:id]
 
-    #   @album = album_repo.find(@id)
+      @album = album_repo.find(@id)
 
-    #   # @album.title = params[:title]
-    #   # @album.release_year = params[:release_year]
-    #   # @album.artist_id = params[:artist_id]
-    #   @artist = artist_repo.find(@id)
-    #   # @artist.name = params[:name]
+      # @album.title = params[:title]
+      # @album.release_year = params[:release_year]
+      # @album.artist_id = params[:artist_id]
+      @artist = artist_repo.find(@id)
+      # @artist.name = params[:name]
 
-    #   return erb(:index)
-    # end
+      return erb(:index)
+    end
 
     # get '/albums' do
     #   repo = AlbumRepository.new
